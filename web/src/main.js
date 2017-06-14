@@ -7,12 +7,17 @@ import request from './utils/request'
 import lang from './lang'
 import iView from 'iview'
 import vuepaypal from 'vue-paypal-checkout'
+import VueECharts from 'vue-echarts/components/ECharts.vue'
+import 'echarts'
 
 import 'iview/dist/styles/iview.css';
 
 Vue.use(vuepaypal)
 Vue.use(iView);
 Vue.use(lang);
+
+Vue.component('chart', VueECharts)
+
 
 Vue.prototype.$http = request
 Vue.config.productionTip = false

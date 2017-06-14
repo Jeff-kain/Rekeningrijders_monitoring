@@ -12,24 +12,6 @@ const router = new Router({
       parent: [''],
       breadcrumb: 'Home'
     },
-    children: [{
-      path: '/',
-      component: require('../pages/stolenVehicles.vue'),
-      meta: {
-        parent: ['/'],
-        breadcrumb: 'Stolen vehicles'
-      },
-    },
-    {
-      path: '/ownerships',
-      name: 'Ownerships',
-      component: require('../pages/ownerships.vue'),
-      meta: {
-        parent: ['/'],
-        breadcrumb: 'Ownerships'
-      },
-    },
-    ]
   },
   ]
 })

@@ -120,15 +120,7 @@
     <div class="layout-menu ivu-menu-dark">
       <Menu mode="horizontal" theme="dark" active-name="1">
         <div class="layout-logo">
-          <img class="layout-menu-left-logo" src="../assets/Polizeilogo.jpg" />
-        </div>
-        <div class="layout-nav">
-          <router-link to="/">
-            <Menu-item name="1">Stolen Vehicles</Menu-item>
-          </router-link>
-          <router-link to="Ownerships">
-            <Menu-item name="2">Ownerships</Menu-item>
-          </router-link>
+          <img class="layout-menu-left-logo" src="../assets/germany-flag.png" />
         </div>
       </Menu>
     </div>
@@ -138,7 +130,9 @@
       </Breadcrumb>
     </div>
     <div class="layout-content">
-      <router-view></router-view>
+          <dashboard></dashboard> 
+
+      <router-view> </router-view>
        <div class="layout-copy">
       2016-2017 &copy; Fontys ICT S61TA
     </div>
@@ -146,9 +140,14 @@
   </div>
 </template>
 <script>
+  import charts from './charts/uptime.js' 
+  import dashboard from './dashboard'
+
   export default {
+
     name: 'test',
     components: {
+      charts, dashboard
     },
     data() {
       return {
