@@ -1,7 +1,4 @@
 export let initial = {
-    title: {
-        text: 'Total kilometers',
-    },
     tooltip: {
         trigger: 'axis'
     },

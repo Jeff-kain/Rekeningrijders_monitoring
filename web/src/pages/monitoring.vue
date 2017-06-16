@@ -8,17 +8,16 @@
     <div>
         <Card>
             <div v-show="!error">
-            <chart :options="uptime"
-                   ref="uptime"
-                   auto-resize></chart>
+                <p1>{{name}}</p1>
+                <chart :options="uptime" ref="uptime" auto-resize></chart>
             </div>
             <div v-show="error">
-                    <Alert type="error" show-icon>
-        Kan Server niet bereiken !
-        <span slot="desc">
-            Laatste succesvolle connectie was om {{lasttimestamp}}
-        </span>
-    </Alert>
+                <Alert type="error" show-icon>
+                    Kan Server niet bereiken !
+                    <span slot="desc">
+                        Laatste succesvolle connectie was om {{lasttimestamp}}
+                    </span>
+                </Alert>
             </div>
         </Card>
         <br>
@@ -44,7 +43,7 @@ export default {
                     axisLabel: { show: true }
                 },
                 series: [{
-                    name: 'overheid',
+                    name: this.name,
                     data: []
                 }]
             }
@@ -66,18 +65,17 @@ export default {
                 .catch((error) => {
                     this.error = true
                     this.async.xAxis.data = []
-                    this.async.series[0].data =[]
+                    this.async.series[0].data = []
                     console.log(error)
                 });
         }
     },
     mounted() {
         var self = this
-        this.uptime.title.text = this.name
         window.setInterval(function () {
             self.getResponse()
         }, 5000);
-        
+
 
     },
 }

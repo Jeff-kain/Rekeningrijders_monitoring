@@ -45,7 +45,6 @@
     margin: 15px;
     overflow: hidden;
     border-radius: 4px;
-    max-height: 85vh;
   }
   
   .layout-content-main {
@@ -56,9 +55,6 @@
     text-align: center;
     color: #9ea7b4;
     position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 5vh;
     width: 100%;
     overflow: hidden;
   }
