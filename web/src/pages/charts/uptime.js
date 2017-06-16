@@ -1,4 +1,5 @@
 export let initial = {
+color: ['#21FF5E', '#0DFF53'],
     tooltip: {
         trigger: 'axis'
     },
@@ -24,19 +25,22 @@ export let initial = {
                 show: true,
                 title: 'opslaan',
                 type: 'png',
-                name: 'catootjeskraam_gebruikers',
+                name: 'rapport',
                 pixelRatio: 10
             }
         }
     },
     xAxis: {
+        name: 'time (HH:mm:ss)',
         type: 'category',
         boundaryGap: false,
         data: []
     },
-    yAxis: {
-        show: false
-    },
+    yAxis: [
+        {
+            name: 'response time (ms)',
+            type: 'value',
+        },],
     series: [{
         name: 'Kilometers',
         type: 'line',
@@ -51,7 +55,8 @@ export let initial = {
             data: [
                 { type: 'average', name: 'Average' }
             ]
-        }
+        },
+       
     }, ]
 }
 
