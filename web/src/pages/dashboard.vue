@@ -33,7 +33,6 @@
         politie: [],
         simulatie: [],
         rekeningrijden: [],
-
       }
     },
     methods: {
@@ -51,7 +50,17 @@
         this.$http
           .get('http://192.168.25.217:8080/api')
           .then((response) => {
-            this.overheid = response
+            this.movement = response
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+         getPolitie() {
+        this.$http
+          .get('http://192.168.25.213:8080/api')
+          .then((response) => {
+            this.politie = response
           })
           .catch((error) => {
             console.log(error);
@@ -59,7 +68,7 @@
       },
       getRekeningrijden() {
         this.$http
-          .get('http://192.168.25.211:8080/api')
+          .get('http://192.168.25.212:8080/api')
           .then((response) => {
             this.rekeningrijden = response
           })
