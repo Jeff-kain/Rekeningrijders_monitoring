@@ -6,79 +6,23 @@
 
 <template>
   <div>
-    <Card>
-      <chart :options="uptime" ref="uptime" auto-resize></chart>
-    </Card>
+    <monitoring name="Overheid" url="http://192.168.25.214:8080/api/invoice"></monitoring>
     <br>
   </div>
 </template>
 <script>
-  import { initial as lineInit, async as lineAsync } from './charts/uptime.js'
+  import monitoring from './monitoring'
   export default {
     components: {
+      monitoring
     },
     data() {
       return {
-        uptime: lineInit,
-        invoices: [],
-        vehicles: [],
-        ownershipDetails: [],
-        vehiclePager: {
-          start: 0,
-          size: 15,
-        },
-        totalVehicles: 0,
-        overheid: [],
-        movement:[],
-        politie: [],
-        simulatie: [],
-        rekeningrijden: [],
       }
     },
     methods: {
-      getOverheid() {
-        this.$http
-          .get('http://192.168.25.214:8080/api')
-          .then((response) => {
-            this.overheid = response
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-            getmovement() {
-        this.$http
-          .get('http://192.168.25.217:8080/api')
-          .then((response) => {
-            this.movement = response
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-         getPolitie() {
-        this.$http
-          .get('http://192.168.25.213:8080/api')
-          .then((response) => {
-            this.politie = response
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-      getRekeningrijden() {
-        this.$http
-          .get('http://192.168.25.212:8080/api')
-          .then((response) => {
-            this.rekeningrijden = response
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
     },
     mounted() {
-      this.$refs.uptime.mergeOptions(lineAsync)
     },
   }
 </script>

@@ -1,32 +1,20 @@
 import axios from 'axios'
-
 import config from '../../config'
 
-// Add a request interceptor
+// Store request timestamp in `config`
 axios.interceptors.request.use(config => {
-    // Do something before request is sent
-    // config.withCredentials = true  // 需要跨域打开此配置
-    // post提交 data存在 并且 data不是FormData对象时对数据进行json化处理
-    // if(config.method==='post' && config.data && config.data.constructor !== FormData){
-    //   config.data = qs.stringify(config.data)
-    //   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-    // }
-    // 开启loading动画
-    // store.dispatch('popup/loading/showLoading')
+    config.rqtimestamp = new Date()
     return config
-}, function (error) {
+}, function(error) {
     // Do something with request error
     return Promise.reject(error)
 })
 
-// Add a response interceptor
-axios.interceptors.response.use(response => {
-    // Do something with response data
-    // 关闭loading动画
-    // store.dispatch('popup/loading/hideLoading')
-    return response.data
-}, function (error) {
-    // Do something with response error
+axios.interceptors.response.use(config => {
+    config.rstimestamp = new Date()
+    return config
+}, function(error) {
+    // Do something with request error
     return Promise.reject(error)
 })
 
@@ -44,9 +32,8 @@ export default {
     get(url, params) {
         return axios({
             method: 'get',
-            url: baseURL + url,
+            url: url,
             params,
-            timeout: 30000,
             headers: this.getHeaders()
         })
     },
